@@ -26,8 +26,8 @@ Install graphviz or use the provided docker container
 
 1. Start the puppet debugger or use the container `docker run -ti --rm -p 12000:12000 nwops/puppet-debugger-graph`
 2. type `graph` to enable graph mode
-3. Open a browser and goto http://localhost:12000
 3. create some resources in the debugger
+3. Open a browser and goto http://localhost:12000
 4. Add some more resources and watch the graph grow  (refreshes every 10 seconds)
 
 
