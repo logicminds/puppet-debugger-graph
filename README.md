@@ -24,7 +24,7 @@ Install graphviz or use the provided docker container
 
 ## Usage
 
-1. Start the puppet debugger or use the container `docker run -ti --rm -p 12000:12000 nwops/puppet-debugger-graph`
+1. Start the puppet debugger or use the container `docker run -ti --rm -p 12000:12000 logicminds/puppet-debugger-graph`
 2. type `graph` to enable graph mode
 3. create some resources in the debugger
 3. Open a browser and goto http://localhost:12000
@@ -43,7 +43,7 @@ This should make some example graphs
 ```
 
 ### Demo in a container
-1. Start the puppet debugger or use the container `docker run -ti --rm -p 12000:12000 nwops/puppet-debugger-graph`
+1. Start the puppet debugger or use the container `docker run -ti --rm -p 12000:12000 logicminds/puppet-debugger-graph`
 2. type `play https://gist.github.com/logicminds/53523f427f208f6521716e4e5f93307e` inside the debugger
 3. Open a browser and goto http://localhost:12000
 4. Add some more resources and watch the graph grow  (refreshes every 10 seconds)
@@ -52,7 +52,7 @@ This should make some example graphs
 ## Container
 To run in a container use the following command
 
-`docker run -ti --rm -p 12000:12000 nwops/puppet-debugger-graph`
+`docker run -ti --rm -p 12000:12000 logicminds/puppet-debugger-graph`
 
 ## Development
 
