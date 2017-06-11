@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: nwops/puppet-debugger-graph
+    entrypoint: puppet debugger
+    working_dir: /app
+    ports:
+      - "12000:12000"
+    volumes:
+      - .:/app
