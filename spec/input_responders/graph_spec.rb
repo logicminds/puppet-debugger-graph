@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'puppet-debugger'
-require 'puppet-debugger/input_responders/graph'
 require 'puppet-debugger/plugin_test_helper'
 
 describe :graph do
@@ -8,7 +7,9 @@ describe :graph do
   let(:args) { [] }
 
   it 'works' do
-    expect(plugin.run(args)).to eq('sdafsda')
+    plugin.create_graph_content
+    # plugin.handle_input("file{'/tmp/test': }")
+    # expect(output.string).to eq('sdafsda')
   end
 
 end

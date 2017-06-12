@@ -17,7 +17,7 @@ module PuppetDebugger
       def toggle_status
         status = !status
         if status
-          add_hook(:after_output, :create_graph) do |code, debugger|
+          add_hook(:after_output, :create_graph_content) do |code, debugger|
             # ensure we only start a single thread, otherwise they could stack up
             # and try to write to the same file.
             Thread.kill(@graph_thread) if @graph_thread
@@ -59,13 +59,14 @@ module PuppetDebugger
 
         svg = ::GraphViz.parse_string(dotfile) do |graph|
           graph[:label] = 'Resource Relationships'
-
           # change the whits into something readable
           graph.each_node do |name, node|
             next unless name.start_with? 'Whit'
             newname = name.dup
             newname.sub!('Admissible_class', 'Starting Class')
             newname.sub!('Completed_class', 'Finishing Class')
+            node[:style] = "filled",
+            node[:fillcolor] = :lightblue,
             node[:label] = newname[5..-2]
           end
         end.output(:svg => String)
@@ -76,30 +77,7 @@ module PuppetDebugger
         <html>
         <head>
           <title>Relationship Graph</title>
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-          <script>
-          $(document).ready(function(e) {
-
-    var refresher = setInterval("update_content();",10000); // 30 seconds
-
-})
-
-function update_content(){
-
-    $.ajax({
-      type: "GET",
-      url: "index.html", // post it back to itself - use relative path or consistent www. or non-www. to avoid cross domain security issues
-      cache: false, // be sure not to cache results
-    })
-      .done(function( page_html ) {
-    var newDoc = document.open("text/html", "replace");
-    newDoc.write(page_html);
-    newDoc.close();
-
-    });
-
-}
-</script>
+          <meta http-equiv="refresh" content="10">
         </head>
           <body>
                 <div class="relationships">#{svg_graph}</div>

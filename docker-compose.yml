@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build: .
-    image: nwops/puppet-debugger-graph
+    image: logicminds/puppet-debugger-graph
     entrypoint: puppet debugger
     working_dir: /app
     ports:
